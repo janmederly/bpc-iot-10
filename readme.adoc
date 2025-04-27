@@ -1,0 +1,10 @@
+= BPC-IOT Project number 10
+
+This project is a upython app for rpi pico wh that is simulating a temperature management system for a datacenter.
+
+To run this, copy all files except thingsboard.json to the pico wh and run the main.py file.
+
+The thingsboard.json file is an exported thingsboard dashboard that can be imported into thingsboard to visualize the data.
+For the dashboard to work corretly, you must create a device named `test` in thingsboard.
+Also, you must generate an access token for the device and replace the `access_token` in creds.json.
+

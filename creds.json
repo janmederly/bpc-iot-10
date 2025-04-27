@@ -1,0 +1,9 @@
+{
+    "SSID": "test",
+    "PSWD": "test",
+    "_MQTT_CLIENT_ID_": "test",
+    "_MQTT_REMOTE_SERVER_IP_": "your.own.mqtt.server",
+    "_MQTT_ACCESS_TOKEN_": "your_access_token",
+    "_MQTT_PASSWORD_": "your_password",
+    "_MQTT_REMOTE_SERVER_PORT_": 1883
+}
