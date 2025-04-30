@@ -16,13 +16,19 @@ function createCharts(){
  powerChart=new Chart(document.getElementById('powerChart').getContext('2d'),{type:'line',data:{labels:labels,datasets:[{label:'Power (W)',data:powerData,borderColor:'green',fill:true}]},options:{scales:{y:{beginAtZero:true}}}});
 }
 function updateValues(){fetch('/data').then(r=>r.json()).then(data=>{
+ fanSpeed=data.fanSpeed;
+ if fanSpeed>0{
+   fanSpeed = (parseFloat(data.currSpeed).toFixed(2));
+ } else {
+   fanSpeed = "Not turned on";
+ }
  latestData=data;
  document.getElementById('tempVal').innerText='Temp: '+(parseFloat(data.temp).toFixed(2))+' C';
  document.getElementById('voltVal').innerText='Volt: '+(parseFloat(data.volt).toFixed(2))+' V';
  document.getElementById('currVal').innerText='Curr: '+(parseFloat(data.curr).toFixed(2))+' A';
  document.getElementById('powerVal').innerText='Power: '+(parseFloat(data.power).toFixed(2))+' W';
  document.getElementById('consumptionVal').innerText='Consumption: '+(parseFloat(data.consumption).toFixed(2))+' kWh';
- document.getElementById('currSpeed').innerText='Current fan speed: '+(parseFloat(data.currSpeed).toFixed(2))+' %';
+ document.getElementById('currSpeed').innerText='Current fan speed: '+fanSpeed+' %';
 });}
 function updateCharts(){
  if(!latestData.temp)return;
