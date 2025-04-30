@@ -16,7 +16,7 @@ function createCharts(){
  powerChart=new Chart(document.getElementById('powerChart').getContext('2d'),{type:'line',data:{labels:labels,datasets:[{label:'Power (W)',data:powerData,borderColor:'green',fill:true}]},options:{scales:{y:{beginAtZero:true}}}});
 }
 function updateValues(){fetch('/data').then(r=>r.json()).then(data=>{
- fanSpeed=data.fanSpeed;
+ let fanSpeed=data.fanSpeed;
  if fanSpeed>0{
    fanSpeed = (parseFloat(data.currSpeed).toFixed(2));
  } else {
