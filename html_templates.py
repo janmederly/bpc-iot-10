@@ -17,21 +17,21 @@ function createCharts(){
 }
 function updateValues(){fetch('/data').then(r=>r.json()).then(data=>{
  latestData=data;
- document.getElementById('tempVal').innerText='Temp: '+data.temp+' C';
- document.getElementById('voltVal').innerText='Volt: '+data.volt+' V';
- document.getElementById('currVal').innerText='Curr: '+data.curr+' A';
- document.getElementById('powerVal').innerText='Power: '+data.power+' W';
- document.getElementById('consumptionVal').innerText='Consumption: '+data.consumption+' kWh';
- document.getElementById('currSpeed').innerText='Current fan speed: '+data.currSpeed+' %';
+ document.getElementById('tempVal').innerText='Temp: '+(parseFloat(data.temp).toFixed(2))+' C';
+ document.getElementById('voltVal').innerText='Volt: '+(parseFloat(data.volt).toFixed(2))+' V';
+ document.getElementById('currVal').innerText='Curr: '+(parseFloat(data.curr).toFixed(2))+' A';
+ document.getElementById('powerVal').innerText='Power: '+(parseFloat(data.power).toFixed(2))+' W';
+ document.getElementById('consumptionVal').innerText='Consumption: '+(parseFloat(data.consumption).toFixed(2))+' kWh';
+ document.getElementById('currSpeed').innerText='Current fan speed: '+(parseFloat(data.currSpeed).toFixed(2))+' %';
 });}
 function updateCharts(){
  if(!latestData.temp)return;
  var t=new Date().toLocaleTimeString();
  labels.push(t);
- tempData.push(latestData.temp);
- voltData.push(latestData.volt);
- currData.push(latestData.curr);
- powerData.push(latestData.power);
+ tempData.push(parseFloat(latestData.temp).toFixed(2));
+ voltData.push(parseFloat(latestData.volt).toFixed(2));
+ currData.push(parseFloat(latestData.curr).toFixed(2));
+ powerData.push(parseFloat(latestData.power).toFixed(2));
  if(labels.length>20){labels.shift();tempData.shift();voltData.shift();currData.shift();powerData.shift();}
  tempChart.update();voltCurrChart.update();powerChart.update();
 }
