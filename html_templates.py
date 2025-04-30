@@ -16,9 +16,9 @@ function createCharts(){
  powerChart=new Chart(document.getElementById('powerChart').getContext('2d'),{type:'line',data:{labels:labels,datasets:[{label:'Power (W)',data:powerData,borderColor:'green',fill:true}]},options:{scales:{y:{beginAtZero:true}}}});
 }
 function updateValues(){fetch('/data').then(r=>r.json()).then(data=>{
- let fanSpeed=data.currSpeed;
- if fanSpeed>0{
-   fanSpeed = (parseFloat(fanSpeed).toFixed(2));
+ let fanSpeed=data.curr_speed;
+ if(fanSpeed>0){
+   fanSpeed = (parseFloat(fanSpeed).toFixed(2)) + " %";
  } else {
    fanSpeed = "Not turned on";
  }
@@ -28,7 +28,7 @@ function updateValues(){fetch('/data').then(r=>r.json()).then(data=>{
  document.getElementById('currVal').innerText='Curr: '+(parseFloat(data.curr).toFixed(2))+' A';
  document.getElementById('powerVal').innerText='Power: '+(parseFloat(data.power).toFixed(2))+' W';
  document.getElementById('consumptionVal').innerText='Consumption: '+(parseFloat(data.consumption).toFixed(2))+' kWh';
- document.getElementById('currSpeed').innerText='Current fan speed: '+fanSpeed+' %';
+ document.getElementById('currSpeed').innerText='Current fan speed: '+fanSpeed+'';
 });}
 function updateCharts(){
  if(!latestData.temp)return;
